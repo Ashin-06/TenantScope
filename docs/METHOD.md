@@ -2,7 +2,7 @@
 
 ## Policy and execution
 
-Users have a tenant, active status, and member/admin/worker role. Document owners and same-tenant admins manage content and grants. Active same-tenant share recipients may read. Transfer changes ownership/tenant and clears grants; account disablement takes effect immediately. Exports must be reauthorized at execution using current content. Worker execution is a distinct operation.
+Users have a tenant, active status, and member/admin/worker role. Document owners and same-tenant admins manage content and grants. Active same-tenant share recipients may read. Transfer changes ownership within the same tenant and clears grants; account disablement takes effect immediately. Exports must be reauthorized at execution using current content. Worker execution is a distinct operation.
 
 `model.py` implements this policy in memory. `target.py` uses parameterized SQLite queries and independently written enforcement. A fresh temporary database is used for every run and removed afterward. The report includes logical final states and failure responses; it does not include the raw database or an external service trace. State divergence can produce subsequent failures after the initial defect; the minimizer preserves a specific first-failure fingerprint rather than assuming every row is an independent vulnerability.
 
