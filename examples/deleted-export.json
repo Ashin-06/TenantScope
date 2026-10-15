@@ -1,0 +1,60 @@
+{
+  "mode": "seeded",
+  "scenario": {
+    "name": "Queued export after document deletion",
+    "users": [
+      {
+        "id": "alice",
+        "tenant": "red"
+      },
+      {
+        "id": "bob",
+        "tenant": "red"
+      },
+      {
+        "id": "carol",
+        "tenant": "blue"
+      },
+      {
+        "id": "admin",
+        "tenant": "red",
+        "role": "admin"
+      },
+      {
+        "id": "worker",
+        "tenant": "system",
+        "role": "worker"
+      }
+    ],
+    "documents": [
+      {
+        "id": "roadmap",
+        "owner": "alice",
+        "content": "Synthetic red-tenant roadmap"
+      },
+      {
+        "id": "blue-note",
+        "owner": "carol",
+        "content": "Synthetic blue-tenant note"
+      }
+    ],
+    "steps": [
+      {
+        "actor": "alice",
+        "op": "queue_export",
+        "document": "roadmap",
+        "job": "export-1"
+      },
+      {
+        "actor": "alice",
+        "op": "delete_document",
+        "document": "roadmap"
+      },
+      {
+        "actor": "worker",
+        "op": "run_export",
+        "job": "export-1"
+      }
+    ]
+  }
+}

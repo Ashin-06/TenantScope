@@ -1,0 +1,59 @@
+{
+  "mode": "seeded",
+  "scenario": {
+    "name": "Deleted account retains cached access",
+    "users": [
+      {
+        "id": "alice",
+        "tenant": "red"
+      },
+      {
+        "id": "bob",
+        "tenant": "red"
+      },
+      {
+        "id": "carol",
+        "tenant": "blue"
+      },
+      {
+        "id": "admin",
+        "tenant": "red",
+        "role": "admin"
+      },
+      {
+        "id": "worker",
+        "tenant": "system",
+        "role": "worker"
+      }
+    ],
+    "documents": [
+      {
+        "id": "roadmap",
+        "owner": "alice",
+        "content": "Synthetic red-tenant roadmap"
+      },
+      {
+        "id": "blue-note",
+        "owner": "carol",
+        "content": "Synthetic blue-tenant note"
+      }
+    ],
+    "steps": [
+      {
+        "actor": "alice",
+        "op": "read",
+        "document": "roadmap"
+      },
+      {
+        "actor": "admin",
+        "op": "delete_account",
+        "target": "alice"
+      },
+      {
+        "actor": "alice",
+        "op": "read",
+        "document": "roadmap"
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "mode": "seeded",
+  "scenario": {
+    "name": "Queued export after revocation",
+    "users": [
+      {
+        "id": "alice",
+        "tenant": "red"
+      },
+      {
+        "id": "bob",
+        "tenant": "red"
+      },
+      {
+        "id": "carol",
+        "tenant": "blue"
+      },
+      {
+        "id": "admin",
+        "tenant": "red",
+        "role": "admin"
+      },
+      {
+        "id": "worker",
+        "tenant": "system",
+        "role": "worker"
+      }
+    ],
+    "documents": [
+      {
+        "id": "roadmap",
+        "owner": "alice",
+        "content": "Synthetic red-tenant roadmap"
+      },
+      {
+        "id": "blue-note",
+        "owner": "carol",
+        "content": "Synthetic blue-tenant note"
+      }
+    ],
+    "steps": [
+      {
+        "actor": "alice",
+        "op": "share",
+        "document": "roadmap",
+        "target": "bob"
+      },
+      {
+        "actor": "bob",
+        "op": "queue_export",
+        "document": "roadmap",
+        "job": "export-1"
+      },
+      {
+        "actor": "alice",
+        "op": "revoke",
+        "document": "roadmap",
+        "target": "bob"
+      },
+      {
+        "actor": "worker",
+        "op": "run_export",
+        "job": "export-1"
+      }
+    ]
+  }
+}

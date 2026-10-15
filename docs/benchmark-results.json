@@ -1,0 +1,114 @@
+[
+  {
+    "scenario": "transfer",
+    "steps": 3,
+    "mismatches": 1,
+    "users": 5,
+    "documents": 2,
+    "mode": "seeded"
+  },
+  {
+    "scenario": "transfer",
+    "steps": 3,
+    "mismatches": 0,
+    "users": 5,
+    "documents": 2,
+    "mode": "repaired"
+  },
+  {
+    "scenario": "revoke",
+    "steps": 4,
+    "mismatches": 1,
+    "users": 5,
+    "documents": 2,
+    "mode": "seeded"
+  },
+  {
+    "scenario": "revoke",
+    "steps": 4,
+    "mismatches": 0,
+    "users": 5,
+    "documents": 2,
+    "mode": "repaired"
+  },
+  {
+    "scenario": "queued-export",
+    "steps": 4,
+    "mismatches": 1,
+    "users": 5,
+    "documents": 2,
+    "mode": "seeded"
+  },
+  {
+    "scenario": "queued-export",
+    "steps": 4,
+    "mismatches": 0,
+    "users": 5,
+    "documents": 2,
+    "mode": "repaired"
+  },
+  {
+    "scenario": "attachment",
+    "steps": 1,
+    "mismatches": 1,
+    "users": 5,
+    "documents": 2,
+    "mode": "seeded"
+  },
+  {
+    "scenario": "attachment",
+    "steps": 1,
+    "mismatches": 0,
+    "users": 5,
+    "documents": 2,
+    "mode": "repaired"
+  },
+  {
+    "scenario": "account-deletion",
+    "steps": 3,
+    "mismatches": 1,
+    "users": 5,
+    "documents": 2,
+    "mode": "seeded"
+  },
+  {
+    "scenario": "account-deletion",
+    "steps": 3,
+    "mismatches": 0,
+    "users": 5,
+    "documents": 2,
+    "mode": "repaired"
+  },
+  {
+    "scenario": "denied-write",
+    "steps": 1,
+    "mismatches": 1,
+    "users": 5,
+    "documents": 2,
+    "mode": "seeded"
+  },
+  {
+    "scenario": "denied-write",
+    "steps": 1,
+    "mismatches": 0,
+    "users": 5,
+    "documents": 2,
+    "mode": "repaired"
+  },
+  {
+    "scenario": "deleted-export",
+    "steps": 3,
+    "mismatches": 1,
+    "users": 5,
+    "documents": 2,
+    "mode": "seeded"
+  },
+  {
+    "scenario": "deleted-export",
+    "steps": 3,
+    "mismatches": 0,
+    "users": 5,
+    "documents": 2,
+    "mode": "repaired"
+  }
+]

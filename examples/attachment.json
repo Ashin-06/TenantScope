@@ -1,0 +1,49 @@
+{
+  "mode": "seeded",
+  "scenario": {
+    "name": "Attachment crosses tenant boundary",
+    "users": [
+      {
+        "id": "alice",
+        "tenant": "red"
+      },
+      {
+        "id": "bob",
+        "tenant": "red"
+      },
+      {
+        "id": "carol",
+        "tenant": "blue"
+      },
+      {
+        "id": "admin",
+        "tenant": "red",
+        "role": "admin"
+      },
+      {
+        "id": "worker",
+        "tenant": "system",
+        "role": "worker"
+      }
+    ],
+    "documents": [
+      {
+        "id": "roadmap",
+        "owner": "alice",
+        "content": "Synthetic red-tenant roadmap"
+      },
+      {
+        "id": "blue-note",
+        "owner": "carol",
+        "content": "Synthetic blue-tenant note"
+      }
+    ],
+    "steps": [
+      {
+        "actor": "carol",
+        "op": "attachment",
+        "document": "roadmap"
+      }
+    ]
+  }
+}
