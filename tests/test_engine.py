@@ -1,4 +1,5 @@
 import copy
+import random
 import sqlite3
 import tempfile
 import unittest
@@ -9,6 +10,30 @@ from tenantscope.target import SQLiteTarget
 
 
 class LifecycleTests(unittest.TestCase):
+    def test_repaired_policy_agrees_on_generated_lifecycle_sequences(self):
+        rng = random.Random(20261015)
+        users = ["alice", "bob", "carol", "admin", "worker"]
+        documents = ["roadmap", "blue-note", "missing"]
+        for case in range(100):
+            request = copy.deepcopy(engine.presets()[0]["input"])
+            request["mode"] = "repaired"
+            steps = []
+            for _ in range(30):
+                op = rng.choice(list(engine.OPS))
+                step = {"actor": rng.choice(users), "op": op}
+                if op not in ("run_export", "delete_account"):
+                    step["document"] = rng.choice(documents)
+                if op in ("share", "revoke", "transfer", "delete_account"):
+                    step["target"] = rng.choice(users)
+                if op in ("queue_export", "run_export"):
+                    step["job"] = rng.choice(["j1", "j2", "j3"])
+                if op == "update":
+                    step["content"] = f"updated-{case}"
+                steps.append(step)
+            request["scenario"]["steps"] = steps
+            with self.subTest(case=case):
+                self.assertEqual(engine.execute(request)["summary"]["mismatches"], 0)
+
     def test_each_seeded_defect_has_a_repaired_control(self):
         for preset in engine.presets():
             with self.subTest(scenario=preset["id"]):
